@@ -1,0 +1,15 @@
+.count {
+    padding-left: 8px;
+    cursor: auto;
+  }
+  .ant-comment-rtl .count {
+    padding-right: 8px;
+    padding-left: 0;
+  }
+
+.post-container {
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: aliceblue;
+}

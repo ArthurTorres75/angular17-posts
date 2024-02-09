@@ -1,0 +1,40 @@
+<nz-comment
+  nzAuthor="{{ 'User' + info.userId }}"
+  [nzDatetime]="time(info.created_at!)"
+  class="post-container"
+>
+  <nz-avatar
+    nz-comment-avatar
+    nzIcon="user"
+    nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+  />
+  <nz-comment-content>
+    <h3>{{ info.title }}</h3>
+    <p>
+      {{ info.body }}
+    </p>
+  </nz-comment-content>
+  <nz-comment-action>
+    <span
+      nz-tooltip
+      nzTitle="Like"
+      nz-icon
+      nzType="like"
+      [nzTheme]="likes > 0 ? 'twotone' : 'outline'"
+      (click)="like()"
+    ></span>
+    <span class="count like">{{ likes }}</span>
+  </nz-comment-action>
+  <nz-comment-action>
+    <span
+      nz-tooltip
+      nzTitle="Dislike"
+      nz-icon
+      nzType="dislike"
+      [nzTheme]="dislikes > 0 ? 'twotone' : 'outline'"
+      (click)="dislike()"
+    ></span>
+    <span class="count dislike">{{ dislikes }}</span>
+  </nz-comment-action>
+  <nz-comment-action>Reply to</nz-comment-action>
+</nz-comment>

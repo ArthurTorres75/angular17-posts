@@ -1,0 +1,54 @@
+<app-modal
+  title="Crear Post"
+  [onSubmitFunction]="onSave"
+  [form]="postForm"
+  [onCancelFunction]="resetForm"
+>
+  <form
+    nz-form
+    nzLayout="vertical"
+    [formGroup]="postForm"
+    (ngSubmit)="onSave()"
+  >
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="title">Título</nz-form-label>
+      <nz-form-control [nzSpan]="25" nzHasFeedback [nzErrorTip]="titleErrorTpl">
+        <input
+          formControlName="title"
+          nz-input
+          name="title"
+          type="text"
+          id="title"
+          value=""
+          placeholder="Ingrese el título"
+          class="full-width"
+        />
+        <ng-template #titleErrorTpl let-control>
+          @if (control.errors?.['maxlength']) { El título no puede contener mas
+          de 15 caracteres! } @if (control.errors?.['required']) { Por favor
+          ingresa el título! }
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzFor="body">Comentario</nz-form-label>
+      <nz-form-control [nzSpan]="25" nzHasFeedback [nzErrorTip]="bodyErrorTpl">
+        <textarea
+          formControlName="body"
+          nz-input
+          name="body"
+          id="body"
+          value=""
+          placeholder="Ingrese el comentario"
+          rows="5"
+          class="full-width"
+        ></textarea>
+        <ng-template #bodyErrorTpl let-control>
+          @if (control.errors?.['maxlength']) { El comentario no puede contener
+          mas de 100 caracteres! } @if (control.errors?.['required']) { Por
+          favor ingresa el comentario! }
+        </ng-template>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</app-modal>
