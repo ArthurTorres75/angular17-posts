@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { getTime } from 'date-fns';
+import { environment } from './../../environments/environment.prod';
 
 // INTERFACES
 import { Post } from '../interfaces/post';
@@ -36,22 +37,20 @@ export class PostService {
   }
 
   getPosts() {
-    this.http
-      .get<Post[]>('https://jsonplaceholder.typicode.com/posts')
-      .subscribe(
-        (data) => {
-          this.#state.set({
-            loading: false,
-            posts: this.addMockCreatedDate(data),
-          });
-        },
-        (error) => {
-          this.#state.set({
-            loading: false,
-            posts: [],
-          });
-        }
-      );
+    this.http.get<Post[]>(environment.url).subscribe(
+      (data) => {
+        this.#state.set({
+          loading: false,
+          posts: this.addMockCreatedDate(data),
+        });
+      },
+      (error) => {
+        this.#state.set({
+          loading: false,
+          posts: [],
+        });
+      }
+    );
   }
 
   private randomNumber() {
@@ -73,7 +72,7 @@ export class PostService {
     body.userId = this.randomNumber();
 
     this.http
-      .post<Post>('https://jsonplaceholder.typicode.com/posts', body, {
+      .post<Post>(environment.url, body, {
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       })
       .subscribe(
