@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { getTime } from 'date-fns';
-import { environment } from './../../environments/environment.prod';
+import { environment } from './../../environments/environment.development';
 
 // INTERFACES
 import { Post } from '../interfaces/post';
@@ -37,7 +37,7 @@ export class PostService {
   }
 
   getPosts() {
-    this.http.get<Post[]>(environment.url).subscribe(
+    this.http.get<Post[]>(environment.apiUrl).subscribe(
       (data) => {
         this.#state.set({
           loading: false,
@@ -72,7 +72,7 @@ export class PostService {
     body.userId = this.randomNumber();
 
     this.http
-      .post<Post>(environment.url, body, {
+      .post<Post>(environment.apiUrl, body, {
         headers: { 'Content-Type': 'application/json; charset=UTF-8' },
       })
       .subscribe(
