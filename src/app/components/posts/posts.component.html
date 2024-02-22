@@ -1,32 +1,33 @@
 <section class="posts-container">
-  @defer ( when !postService.loading() ) { @for(post of postService.posts();
-  track post.id ) {
-  <app-post [info]="post" />
-  } @empty {
-  <nz-empty
-    nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
-    [nzNotFoundContent]="contentTpl"
-    [nzNotFoundFooter]="footerTpl"
-  >
-    <ng-template #contentTpl>
-      <span> No tenemos Posts </span>
-    </ng-template>
-    <ng-template #footerTpl>
-      <app-create-post />
-    </ng-template>
-  </nz-empty>
-  } } @placeholder {
-  <div>
-    <nz-skeleton
-      [nzAvatar]="true"
-      [nzParagraph]="{ rows: 5 }"
-      [nzActive]="true"
-    />
-    <nz-skeleton
-      [nzAvatar]="true"
-      [nzParagraph]="{ rows: 5 }"
-      [nzActive]="true"
-    />
-  </div>
+  @defer (when !postService.loading()) {
+    @for (post of postService.posts(); track post.id) {
+      <app-post [info]="post" />
+    } @empty {
+      <nz-empty
+        nzNotFoundImage="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+        [nzNotFoundContent]="contentTpl"
+        [nzNotFoundFooter]="footerTpl"
+      >
+        <ng-template #contentTpl>
+          <span> No tenemos Posts </span>
+        </ng-template>
+        <ng-template #footerTpl>
+          <app-create-post />
+        </ng-template>
+      </nz-empty>
+    }
+  } @placeholder {
+    <div>
+      <nz-skeleton
+        [nzAvatar]="true"
+        [nzParagraph]="{ rows: 5 }"
+        [nzActive]="true"
+      />
+      <nz-skeleton
+        [nzAvatar]="true"
+        [nzParagraph]="{ rows: 5 }"
+        [nzActive]="true"
+      />
+    </div>
   }
 </section>

@@ -5,11 +5,11 @@
     </div>
     <app-create-post class="content-header-button" />
     @if (postService.posts().length > 0) {
-    <app-alert
-      class="content-header-button"
-      [title]="postService.posts()[0].title"
-      [body]="postService.posts()[0].body"
-    />
+      <app-alert
+        class="content-header-button"
+        [title]="postService.posts()[0].title"
+        [body]="postService.posts()[0].body"
+      />
     }
   </nz-header>
   <nz-content>

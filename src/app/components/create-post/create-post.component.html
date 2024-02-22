@@ -24,9 +24,12 @@
           class="full-width"
         />
         <ng-template #titleErrorTpl let-control>
-          @if (control.errors?.['maxlength']) { El título no puede contener mas
-          de 15 caracteres! } @if (control.errors?.['required']) { Por favor
-          ingresa el título! }
+          @if (control.errors?.["maxlength"]) {
+            El título no puede contener mas de 15 caracteres!
+          }
+          @if (control.errors?.["required"]) {
+            Por favor ingresa el título!
+          }
         </ng-template>
       </nz-form-control>
     </nz-form-item>
@@ -44,9 +47,12 @@
           class="full-width"
         ></textarea>
         <ng-template #bodyErrorTpl let-control>
-          @if (control.errors?.['maxlength']) { El comentario no puede contener
-          mas de 100 caracteres! } @if (control.errors?.['required']) { Por
-          favor ingresa el comentario! }
+          @if (control.errors?.["maxlength"]) {
+            El comentario no puede contener mas de 100 caracteres!
+          }
+          @if (control.errors?.["required"]) {
+            Por favor ingresa el comentario!
+          }
         </ng-template>
       </nz-form-control>
     </nz-form-item>
